@@ -1,8 +1,11 @@
+#!/usr/bin/env node
+
 import {sendRequest} from './RestClient.js';
 import commandLineArgs from 'command-line-args';
 import chalk from 'chalk';
 import death from 'death';
 
+let interval = null;
 const args = commandLineArgs([
     { name: 'startUrl', alias: 'a', type: String },
     { name: 'startMethod', alias: 'b', type: String },
@@ -13,8 +16,14 @@ const args = commandLineArgs([
     { name: 'stopBody', alias: 'f', type: String },
 ]);
 
+// keep node running after code finishes (wait for on death callback)
+if (args.stopUrl) {
+    interval = setInterval(() => { }, 1 << 30);
+}
+
+
 console.log(chalk.bold("PC-Event-Webhooks"));
-const interval = setInterval(() => { }, 1 << 30);
+
 
 // start request
 if (args.startUrl) {
@@ -26,6 +35,7 @@ if (args.startUrl) {
     );
 }
 
+// stop request
 death(() => {
     clearInterval(interval);
 
