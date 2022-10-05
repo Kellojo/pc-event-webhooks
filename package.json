@@ -1,6 +1,6 @@
 {
     "name": "pc-event-webhooks",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A small node app, that sends out webhook notifications, for certain lifecycle events of your computer.",
     "main": "./src/index.js",
     "scripts": {
