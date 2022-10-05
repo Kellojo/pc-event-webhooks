@@ -15,15 +15,20 @@ console.log(chalk.bold("PC Webhooks"));
 
 if (!args.interval) args.interval = 1000;
 
-
 const sendRequest = async () => {
-    console.log(`Sending GET request to ${args.url}`);
-    const response = await fetch(args.url, {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'GET'
-    });
 
-    console.log(`${response.statusText} ${response.status}`);
+    try {
+        console.log(`Sending GET request to ${args.url}`);
+        const response = await fetch(args.url, {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'GET'
+        });
+
+        console.log(`${response.statusText} ${response.status}`);
+    } catch (error) {
+        console.log(`failed to send request`);
+    }
+
 }
 
 sendRequest();
