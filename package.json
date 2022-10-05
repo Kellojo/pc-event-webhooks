@@ -26,7 +26,6 @@
     "dependencies": {
         "chalk": "^5.0.0",
         "command-line-args": "^5.2.1",
-        "death": "^1.1.0",
         "node-fetch": "^3.2.0"
     },
     "type": "module"
